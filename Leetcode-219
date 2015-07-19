@@ -17,6 +17,7 @@ def containsNearbyDuplicate(nums, k):
 
         return False
 
+
 # another optimized implememtation
 def containsNearbyDuplicate2(nums, k):
     if nums == []:
