@@ -1,0 +1,15 @@
+def computeArea(self, A, B, C, D, E, F, G, H):
+    if E >= C or G <= A or F >= D or H <= B:
+        outcome = (C - A) * (D - B) + (G - E) * (H - F)
+    elif E >= A and G <= C and F >= B and H <= D:
+        outcome = (C - A) * (D - B)
+    elif A >= E and C <= G and B >= F and D <= H:
+        outcome = (G - E) * (H - F)
+    else:
+        xx = sorted([A, C, E, G])
+        yy = sorted([B, D, F, H])    
+        area_1 = (C - A) * (D - B)
+        area_2 = (G - E) * (H - F)
+        overlapped = (xx[2] - xx[1]) * (yy[2] - yy[1])
+        outcome = area_1 + area_2 - overlapped 
+    return outcome
