@@ -1,0 +1,12 @@
+def isPowerOfTwo(n):
+    if n >= 2 and n != '' and n != None:
+        if n % 2 != 0:
+            return False
+        elif n / 2 == 1:
+            return True
+        else:
+            return isPowerOfTwo(n/2)
+    elif n == 1:
+        return True
+    else:
+        return False   
