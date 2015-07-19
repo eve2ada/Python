@@ -1,0 +1,68 @@
+'''
+Given two strings s and t, determine if they are isomorphic.
+Two strings are isomorphic if the characters in s can be replaced to get t.
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
+For example,
+Given "egg", "add", return true.
+Given "foo", "bar", return false.
+Given "paper", "title", return true.
+Note:
+You may assume both s and t have the same length.
+'''
+# @param {string} s
+# @param {string} t
+# @return {boolean}
+def isIsomorphic(s, t):
+    i = 1
+    if s == t:
+        return True 
+    if s == None or t == None:
+        return False
+    else:
+        for index in range(len(s)):
+            print 'index=' + str(index)
+            if s[index] not in s[index + 1:]:
+                if t[index] in t[index + 1:]:
+                    return False
+            elif t[index] not in t[index + 1:]:
+                return False
+            else:
+                while index + i < len(s) - 1:
+                    print 'i='+str(i)
+                    print 's[index]='+str(s[index])
+                    print 't[index]='+str(t[index])
+                    print 's[index + i]='+str(s[index + i])
+                    print 't[index + i]='+str(t[index + i])
+ #                   while s[index] in s[index + i:] and t[index] in t[index + i:]:#check current element is in the following sublist
+                    try:
+                        s_index = s.index(s[index], index + i)
+                        t_index = t.index(t[index], index + i)
+                    except ValueError:
+                        s_index = -1
+                        t_index = -1
+                    if s_index != t_index:
+                        return False
+                    else:
+                        i += 1
+        return True
+  
+  def isIsomorphic2(s, t):
+    s_list = []
+    t_list = []
+    if s == t:
+        return True 
+    if s == None or t == None:
+        return False
+    else:
+        for index in range(len(s)):
+            if s[index] not in s[:index]:
+                s_list = [i for i,letter in enumerate(s) if letter == s[index]]
+            if t[index] not in t[:index]:
+                t_list = [i for i,letter in enumerate(t) if letter == t[index]]
+            
+            if s_list != t_list:
+                return False
+        return True
+        
+  def isIsomorphic3(s, t):
+    return len(set(zip(s, t))) == len(set(s)) == len(set(t))
