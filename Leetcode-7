@@ -1,0 +1,12 @@
+def reverse(x):
+    x_str = str(abs(x))
+    x_list = list(x_str)
+    x_list.reverse()
+    result = int(''.join(map(str, x_list)))
+    if result < 2147483648:
+        if x >= 0:
+            return result
+        else:
+            return -1 * result
+    else:
+        return 0
