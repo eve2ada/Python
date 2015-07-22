@@ -1,0 +1,41 @@
+'''
+Given a collection of intervals, merge all overlapping intervals.
+
+For example,
+Given [1,3],[2,6],[8,10],[15,18],
+return [1,6],[8,10],[15,18]. 
+'''
+# Definition for an interval.
+class Interval:
+    def __init__(self, s=0, e=0):
+        self.start = s
+        self.end = e
+
+class Solution:
+    # @param {Interval[]} intervals
+    # @return {Interval[]}
+    def merge(intervals): # sorted not in-place
+        newL = []
+        for subList in sorted(intervals, key = lambda subList: subList.start):
+            if newL != []: 
+                if newL and subList.start <= newL[-1].end:
+                    newL[-1].end = max(subList.end,newL[-1].end)
+                else:
+                    newL += subList,
+            else:
+                newL += subList,
+        return newL
+      
+      
+    def merge(intervals):  # sort in-place
+        newL = []
+        intervals.sort(key = lambda subList : subList.start)
+        for subList in intervals:
+            if newL != []: 
+                if newL and subList.start <= newL[-1].end:
+                    newL[-1].end = max(subList.end,newL[-1].end)
+                else:
+                    newL += subList,
+            else:
+                newL += subList,
+        return newL
