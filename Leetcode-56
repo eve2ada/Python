@@ -21,9 +21,9 @@ class Solution:
                 if newL and subList.start <= newL[-1].end:
                     newL[-1].end = max(subList.end,newL[-1].end)
                 else:
-                    newL += subList,
+                    newL.append(subList)
             else:
-                newL += subList,
+                newL.append(subList)
         return newL
       
       
@@ -35,7 +35,7 @@ class Solution:
                 if newL and subList.start <= newL[-1].end:
                     newL[-1].end = max(subList.end,newL[-1].end)
                 else:
-                    newL += subList,
+                    newL.append(subList)
             else:
-                newL += subList,
+                newL.append(subList)
         return newL
