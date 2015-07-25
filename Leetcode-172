@@ -1,0 +1,14 @@
+'''
+Given an integer n, return the number of trailing zeroes in n!.
+
+Note: Your solution should be in logarithmic time complexity.
+'''
+def trailingZeroes(n):
+    k = 1
+    zero = 0
+    while 5 ** k <= n:        
+        temp = n / int(5 ** k)
+        # to judge if temp is a prime
+        zero += temp    
+        k += 1
+    return zero
