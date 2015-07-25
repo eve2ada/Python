@@ -1,19 +1,16 @@
 def rob(nums):
     n = len(nums)
-    if nums == []:
+    if n == 0:
         return 0
     elif n <= 2:
         return max(nums)
     else:
-        return f(n - 1, nums)
-
-
-def f(index, nums):
-    temp = 0
-    if index == 0:    
-        temp = nums[0]
-    elif index == 1:
-        temp = max(nums[0], nums[1])
-    else:
-        temp = max(f(index - 1, nums), f(index - 2, nums) + nums[index])
-    return temp
+        # initialize
+        last2 = nums[0] # f(index - 2)
+        current = max(nums[0], nums[1]) # f(index - 1)
+        for index in range(2, n):
+            temp = current  # record f(index - 1) 
+            current = max(last2 + nums[index], current) 
+            # f(index) select from f(index-2)+nums[index] and f(index - 1)
+            last2 = temp # f(index - 2) moves to f(index - 1) then index ++ 
+        return current
