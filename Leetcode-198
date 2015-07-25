@@ -1,0 +1,131 @@
+def rob(nums):
+    newL = [] # list object: [amount-0,index-1]
+    n = len(nums)
+    if nums == []:
+        return 0
+    elif n == 1:
+        return nums[0]
+    elif n == 2:
+        return max(nums)
+    else:
+        amount = [0] * n
+        for index in range(n):
+            newL.append([nums[index],index])
+            newL.sort(reverse = True)
+        print newL
+        
+        for index in range(n):
+            print 'index =' + str(index)
+            selected = []
+            wall = []
+                
+            amount[index] = newL[index][0]
+            selected.extend([newL[index][1]])
+            if newL[index][1] - 1 < 0:
+                wall.extend([newL[index][1] + 1])
+            else:
+                wall.extend([newL[index][1] + 1, newL[index][1] - 1])
+            print 'amount_initial = ' + str(amount)
+            
+            i = index - 1
+            while i >= 0:
+                print 'i = ' + str(i)
+ 
+                print 'newL[i][1] = '+ str(newL[i][1])
+                print 'selected =' + str(selected)
+                print 'wall ='+ str(wall)
+                if newL[i][1] not in selected and newL[i][1] not in wall: 
+                    amount[index] += newL[i][0]
+                    selected.extend([newL[i][1]])
+                
+                    if newL[i][1] + 1 not in wall:
+                        wall.extend([newL[i][1] + 1])
+                    
+                    if newL[i][1] - 1 >= 0:
+                        if newL[i][1] - 1 not in wall:
+                            wall.extend([newL[i][1] - 1])
+                print 'selected =' + str(selected)
+                print 'wall =' + str(wall)
+                i -= 1
+                print 'amount =' + str(amount) 
+            
+            j = index + 1
+            while j <= n - 1:
+                print 'j = ' + str(j)
+ 
+                print 'newL[j][1] = '+ str(newL[j][1])
+                print 'selected =' + str(selected)
+                print 'wall ='+ str(wall)
+                if newL[j][1] not in selected and newL[j][1] not in wall: 
+                    amount[index] += newL[j][0]
+                    selected.extend([newL[j][1]])
+                
+                    if newL[j][1] + 1 not in wall:
+                        wall.extend([newL[j][1] + 1])
+                    
+                    if newL[j][1] - 1 >= 0:
+                        if newL[j][1] - 1 not in wall:
+                            wall.extend([newL[j][1] - 1])
+                print 'selected =' + str(selected)
+                print 'wall =' + str(wall)
+                j += 1
+                print 'amount =' + str(amount) 
+        return max(amount)
+
+                
+
+'''            
+            i = 0
+            while i < n:
+                print 'i = ' + str(i)
+ 
+                if i != index:
+                    print 'newL[i][1] = '+ str(newL[i][1])
+                    print 'selected =' + str(selected)
+                    print 'wall ='+ str(wall)
+                    if newL[i][1] not in selected and newL[i][1] not in wall: 
+                        amount[index] += newL[i][0]
+                        selected.extend([newL[i][1]])
+                    
+                        if newL[i][1] + 1 not in wall:
+                            wall.extend([newL[i][1] + 1])
+                        
+                        if newL[i][1] - 1 >= 0:
+                            if newL[i][1] - 1 not in wall:
+                                wall.extend([newL[i][1] - 1])
+                    print 'selected =' + str(selected)
+                    print 'wall =' + str(wall)
+                i += 1
+                print 'amount =' + str(amount) 
+'''
+            
+'''
+        if len(set(nums)) != n:
+            from collections import Counter
+            duplicatedL = [k for k,v in Counter(nums).items() if v>1]
+        else:
+'''        
+        
+    
+'''
+    numsD = nums * 2
+    amount = [0] * len(numsD)
+    isRobbed = [0] * len(numsD)
+    for outer in range(len(nums)):
+        temp = 0
+        index = outer
+        while outer <= index <= len(numsD) - 1:
+            print 'index = ' + str(index)
+            print 'indexOuter = ' + str(outer)
+            print isRobbed
+            if index == 0:
+                isRobbed[index] = 1
+            else:
+                if isRobbed[index - 1] == [0] and isRobbed[index + 1] == [0]:
+                    print 'inner2'
+                    temp += nums[index]
+                    isRobbed[index] = 1
+            index += 2
+        amount[outer] = temp
+    return max(amount)
+'''
