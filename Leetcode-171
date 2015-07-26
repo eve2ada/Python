@@ -1,0 +1,21 @@
+def titleToNumber(s):
+    dic = {}
+    from string import ascii_uppercase
+    for index in range(len(ascii_uppercase)):
+        dic[ascii_uppercase[index]] = index + 1
+    print dic
+    
+    newL = list(s)
+    n = len(s)
+    num = 0
+    if not s:
+        return 0
+    elif n == 1:
+        return dic[newL[0]]
+    else:
+        for index in range(n):
+            print 'index = ' + str(index)
+            print 'dic[newL[index]] = ' + str(dic[newL[index]])
+            num += (26 ** (n - index - 1)) * dic[newL[index]]
+            print 'nums =' + str(num)
+        return num
