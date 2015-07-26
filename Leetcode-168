@@ -1,0 +1,43 @@
+'''
+Given a positive integer, return its corresponding column title as appear in an Excel sheet.
+
+For example:
+
+    1 -> A
+    2 -> B
+    3 -> C
+    ...
+    26 -> Z
+    27 -> AA
+    28 -> AB 
+ '''
+'''   
+def convertToTitle(n):
+    dic = {}
+    letterL = []
+    temp = n
+
+    from string import ascii_uppercase 
+    
+    dic[0] = 'Z'
+    for index in range(26):
+        dic[index + 1] = ascii_uppercase[index]
+
+    if n < 1:
+        return None
+    elif temp <= 26:
+        letterL.append(dic[temp],)
+    else:
+        while temp > 26:
+            letterL.append(dic[temp%26],)
+            if temp%26 == 0:
+                temp = (temp - 26)/26
+            else:
+                temp = (temp - temp%26)/26
+
+        if temp <= 26:
+            letterL.append(dic[temp],)
+        
+    letterL.reverse()
+
+    return ''.join(letterL)
