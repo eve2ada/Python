@@ -1,0 +1,6 @@
+def plusOne(digits):
+    num = ''.join(str(item) for item in digits)
+    num = int(num) + 1
+    newL = list(str(num))
+    newL = [int(item) for item in newL]
+    return newL
