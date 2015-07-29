@@ -1,0 +1,12 @@
+def lengthOfLastWord(s):
+    import string
+    if len(s) == 0:
+        return 0
+    else:
+        s = s.lower()
+        newL = s.split(' ')
+        newL = filter(None, newL)
+        if newL == []:
+            return 0
+        else:
+            return len(newL[-1])
