@@ -1,0 +1,16 @@
+    def largestNumber(self, nums):
+        if max(nums) == 0:
+            return str(0)
+        
+        n = len(nums)
+        if n == 0 or n == 1:
+            return str(nums[0])
+        elif len(nums) == 2:
+            return max(str(nums[0]) + str(nums[1]), str(nums[1]) + str(nums[0]))
+            
+        else:
+            newL = []
+            newL = map(str,nums)
+
+            result = sorted(newL, cmp = lambda x,y: cmp(x + y, y + x), reverse = True)
+            return ''.join(result)
