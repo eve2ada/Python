@@ -1,0 +1,18 @@
+def countPrimes(n):
+    if n <= 2:
+        return 0
+    elif n == 3:
+        return 1
+    else:
+        primeNum = [2]
+        for i in range(3, n, 2):
+            k = round(i ** 0.5)
+            if k ** 2 < i:
+                k += 1
+            for j in [x for x in primeNum if x < k]:
+                if i % j == 0:
+                    break
+            
+            primeNum.append(i,)
+            
+        return len(primeNum)
