@@ -1,0 +1,25 @@
+def compareVersion(version1, version2):
+    list1 = version1.split('.')
+    list2 = version2.split('.')
+    len1 = len(list1)
+    len2 = len(list2)
+    n = min(len1,len2)
+    for i in range(n):
+        if int(list1[i]) > int(list2[i]):
+            return 1
+        elif int(list1[i]) < int(list2[i]):
+            return -1
+        else:
+            pass
+
+    if len1 == len2:
+        return 0
+    else:
+        newL1 = filter(lambda x : int(x) != 0, list1)
+        newL2 = filter(lambda x : int(x) != 0, list2)
+        if len1 > len2 and len(newL1) > len(newL2):    
+            return 1
+        elif len1 < len2 and len(newL1) < len(newL2):
+            return -1
+        else:
+            return 0
