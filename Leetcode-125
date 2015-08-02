@@ -1,0 +1,15 @@
+def isPalindrome(s):
+    if s == '':
+        return True
+        
+    import string
+    news = s.lower()
+    newL = []
+    scope =  string.ascii_lowercase + '0123456789'
+    for letter in news:
+        if letter in scope:
+            newL.append(letter)
+
+    revL = list(reversed(newL))
+    
+    return newL == revL
