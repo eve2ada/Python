@@ -1,0 +1,25 @@
+def countAndSay(n):
+    if n == 0:
+        return None
+    
+    elif n == 1:
+        return str(1)
+    
+    else:
+        last = countAndSay(n - 1)
+        str_n = str(last)
+        length = len(str_n)
+        outcome = ''
+        i = 0
+        while i < length:
+            count = 1
+            j = i + 1
+            while j in range(i + 1, length):
+                if str_n[i] == str_n[j]:
+                    count += 1
+                    j += 1
+                else:
+                    break
+            outcome = outcome + str(count) + str_n[i]
+            i = j
+        return outcome
