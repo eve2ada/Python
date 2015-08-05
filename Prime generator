@@ -1,0 +1,13 @@
+def genPrimes():
+   earlierP = []
+   current = 2
+   while True:       
+       for number in earlierP:
+#           print 'number = ' + str(number)
+           if current % number == 0:
+               break
+       else:
+           earlierP.append(current)
+           yield current
+       
+       current += 1
