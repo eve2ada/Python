@@ -1,0 +1,25 @@
+def uniqueValues(aDict):
+    '''
+    aDict: a dictionary
+    returns: a sorted list of keys that map to unique aDict values, empty list if none
+    '''
+    dict = {} # dictionary for unique values and occurence
+    keyL = aDict.keys()
+    valueL = aDict.values()
+    newL = [] # list for unique values 
+    
+    if len(set(valueL)) == len(valueL):
+        keyL.sort()
+        return keyL
+    else:
+        for key in aDict.keys():        
+            dict[aDict[key]] = dict.get(aDict[key], 0) + 1
+        print dict
+        for key, value in dict.items():
+            if value == 1:
+                newL.append(key)
+        for key, value in aDict.items():
+            if value not in newL:
+                keyL.remove(key)
+        keyL.sort()
+        return keyL
