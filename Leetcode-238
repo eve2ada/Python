@@ -1,11 +1,13 @@
-    def productExceptSelf(nums):
-        n = len(nums)
-        product = [1] * n
+def productExceptSelf(nums):
+    n = len(nums)
+    product = [1] * n
     
-        for index in range(n):
-            temp = 0
-            while temp < n:
-                if temp != index:
-                    product[index] *= nums[temp]
-                temp += 1
-        return product
+    for i in range(1, n):
+        product[i] = product[i-1] * nums[i-1]  # from right to left, get the product from the beginning to last item
+    
+    temp = 1    
+    for j in range(n-2, -1, -1):
+        temp *= nums[j + 1]
+        product[j] *= temp
+    
+    return product
