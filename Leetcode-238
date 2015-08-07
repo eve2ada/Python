@@ -1,0 +1,11 @@
+    def productExceptSelf(nums):
+        n = len(nums)
+        product = [1] * n
+    
+        for index in range(n):
+            temp = 0
+            while temp < n:
+                if temp != index:
+                    product[index] *= nums[temp]
+                temp += 1
+        return product
