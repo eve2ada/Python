@@ -23,3 +23,49 @@ class Solution:
             return True
         else:
             return self.hasPathSum(root.left, left) or self.hasPathSum(root.right, left)
+
+
+a = TreeNode(5)
+a.val = 5
+b = TreeNode(4)
+b.val = 4
+c = TreeNode(8)
+c.val = 8
+d = TreeNode(11)
+d.val = 11
+e = TreeNode(7)
+e.val = 7
+f = TreeNode(2)
+f.val = 2
+
+g = TreeNode(13)
+g.val = 13
+h = TreeNode(4)
+h.val = 4
+i = TreeNode(1)
+i.val = 1
+
+a.left = b
+a.right = c
+
+b.left = d
+b.right = None
+
+d.left = e
+d.right = f
+
+e.left = None
+e.right = None
+
+f.left = None
+f.right = None
+
+c.left = g
+c.right = h
+h.left = None
+h.right = i
+
+sum = 22
+
+s = Solution()
+print s.hasPathSum(a, sum)
