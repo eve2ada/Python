@@ -19,19 +19,14 @@ class Solution:
         print q
         if p is None and q is None:
             return True
-        elif (p is None and q is not None) or (p is not None and q is None):
+        if None in [p,q]:
             print 'here1'
             return False
         
         if p.val != q.val:
             print 'here2'
             return False
-        elif self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right):
-            print 'here4'
-            return True
-        else:
-            print 'here3'
-            return False
+        return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
 
 p = TreeNode([10,5,15])
 q = TreeNode([10,5,None,None,15])
