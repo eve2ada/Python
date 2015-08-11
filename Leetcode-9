@@ -1,0 +1,10 @@
+'''
+Determine whether an integer is a palindrome. Do this without extra space.
+'''
+def isPalindrome(x):
+    if x < 0:
+        return False
+    elif x < 10:
+        return True
+    else:
+        return x == int(str(x)[::-1])
