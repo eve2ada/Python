@@ -1,0 +1,19 @@
+'''
+Assume s is a string of lower case characters.
+
+Write a program that prints the number of times the string 'bob' occurs in s. 
+For example, if s = 'azcbobobegghakl', then your program should print
+
+Number of times bob occurs is: 2
+'''
+def findBob(s, sub = 'bob'):
+    time = 0
+    if 'bob' not in s:
+        print 'Number of times bob occurs is: 0'
+    else:
+        for index in range(0, len(s) - 2):
+            print 'index = ' + str(index)
+            print 's[index:index+3] ='+ s[index:index + 3]
+            if s[index:index + 3] == 'bob':
+                time += 1
+        print 'Number of times bob occurs is: %d' %time
