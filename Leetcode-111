@@ -1,0 +1,124 @@
+'''
+Given a binary tree, find its minimum depth.
+
+The minimum depth is the number of nodes along the shortest path from the root node 
+down to the nearest leaf node.
+'''
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+class Solution:
+    # @param {TreeNode} root
+    # @return {integer}
+    def minDepth(self, root):
+        if root is None:
+            return 0
+        
+        if root.left is None and root.right is None:
+            return 1
+        else:
+            queue = [(root,1)]
+            
+            while len(queue) > 0:
+                temp,count = queue.pop(0)
+                
+                if [None,None] == [temp.left,temp.right]:
+                    return count
+                if temp.left is not None:
+                    queue.append((temp.left,count + 1))
+                if temp.right is not None:
+                    queue.append((temp.right, count + 1))
+                
+            
+'''
+#testcase 1
+a = TreeNode(5)
+a.val = 5
+b = TreeNode(4)
+b.val = 4
+c = TreeNode(8)
+c.val = 8
+d = TreeNode(11)
+d.val = 11
+e = TreeNode(7)
+e.val = 7
+f = TreeNode(2)
+f.val = 2
+
+g = TreeNode(13)
+g.val = 13
+h = TreeNode(4)
+h.val = 4
+i = TreeNode(1)
+i.val = 1
+
+a.left = b
+a.right = c
+
+b.left = d
+b.right = None
+
+d.left = e
+d.right = f
+
+e.left = None
+e.right = None
+
+f.left = None
+f.right = None
+
+c.left = g
+c.right = h
+h.left = None
+h.right = i
+'''
+
+#testcase 2
+a = TreeNode(1)
+a.val = 1
+b = TreeNode(2)
+b.val = 2
+#c= TreeNode(3)
+#c.val = 3
+a.left = b
+a.right = None
+b.left = None
+b.right = None
+#c.left = None
+#c.right = None
+
+'''
+#testcase 3
+a = TreeNode(1)
+a.val = 1
+b = TreeNode(2)
+b.val = 2
+c = TreeNode(3)
+c.val = 3
+d = TreeNode(4)
+d.val = 4
+e = TreeNode(5)
+e.val = 5
+
+a.left = b
+a.right = None
+
+b.left = c
+b.right = None
+
+c.left = d
+d.right = None
+
+d.left = e
+d.right = None
+
+e.left = None
+e.right = None
+'''
+
+s = Solution()
+print s.minDepth(a)
