@@ -21,17 +21,30 @@ class Solution:
         if root.left is None and root.right is None:
             return 1
         else:
-            queue = [(root,1)]
-            
-            while len(queue) > 0:
-                temp,count = queue.pop(0)
-                
-                if [None,None] == [temp.left,temp.right]:
-                    return count
-                if temp.left is not None:
-                    queue.append((temp.left,count + 1))
+            count_min = 0
+            count = 1
+            stack = [root]
+            while len(stack) > 0:
+                temp = stack.pop(0)
+#                count -= 1
+                if [None, None] == [temp.left, temp.right]:
+                    print 'here1'
+                    print 'count_min = ' + str(count_min)
+                    print 'count = ' + str(count) 
+                    if count_min == 0:
+                        count_min = count
+                    elif count < count_min:
+                        count_min = count
                 if temp.right is not None:
-                    queue.append((temp.right, count + 1))
+                    print 'right'
+                    count += 1
+                    stack.insert(0,temp.right)
+                if temp.left is not None:
+                    print 'left'
+                    count += 1
+                    stack.insert(0, temp.left)
+
+            return count_min
                 
             
 '''
