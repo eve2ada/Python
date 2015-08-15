@@ -46,3 +46,39 @@ class Solution:
             j += 1
 
         return head
+
+a = ListNode(1)
+b = ListNode(2)
+'''
+c = ListNode(3)
+d = ListNode(4)
+e = ListNode(5)
+'''
+a.next = None
+a.val = 1
+
+
+b.next = None
+b.val = 2
+
+'''
+c.next = d
+c.val = 3
+
+
+d.next = e
+d.val = 4
+
+
+e.next = None
+e.val = 5
+'''
+s = Solution()
+head = s.removeNthFromEnd(a,1)
+print head
+#print head.next
+while head.next is not None:
+    head.next = head.next.next
+    print head.next
+
+#print head.val
