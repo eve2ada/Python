@@ -17,36 +17,13 @@ class Solution:
     def minDepth(self, root):
         if root is None:
             return 0
-        if root.left is None and root.right is None:
-            return 1
-        else:
-            stack = [root]
-            count_min = 0
-            count = 1
-
-            while len(stack) > 0:
-                temp = stack.pop(0)
-                if [None, None] == [temp.left, temp.right]:
-                    print 'count = ' + str(count)
-                    print 'count_min = ' + str(count_min)
-                    if count_min == 0:
-                        count_min = count
-                    elif count < count_min:
-                        count_min = count
-                        count = 1
-                                      
-                if temp.left is not None:
-                    print 'left'
-                    count += 1
-                    stack.insert(0,temp.left)
-                if temp.right is not None:
-                    print 'right'
-                    count += 1
-                    stack.insert(0,temp.right)
-                
-                count_min = min(self.minDepth(temp.left),self.minDepth(temp.right))
             
-            return count_min
+        if root.left is None:
+            return self.minDepth(root.right) + 1
+        elif root.right is None:
+            return self.minDepth(root.left) + 1
+        else:
+            return min(self.minDepth(root.left),self.minDepth(root.right)) + 1
                 
             
 '''
