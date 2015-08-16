@@ -47,3 +47,52 @@ class Solution:
                 (list3_node[i]).next = list3_node[i + 1]
             
             return list3_node[0]
+a = ListNode(1)
+b = ListNode(2)
+c = ListNode(3)
+d = ListNode(4)
+e = ListNode(5)
+
+f = ListNode(2)
+g = ListNode(3)
+h = ListNode(4)
+i = ListNode(5)
+j = ListNode(6)
+
+a.next = b
+a.val = 1
+
+b.next = c
+b.val = 2
+
+c.next = d
+c.val = 3
+
+d.next = e
+d.val = 4
+
+e.next = None
+e.val = 5
+
+f.next = g
+f.val = 2
+
+g.next = h
+g.val = 3
+
+h.next = i
+h.val = 4
+
+i.next = j
+i.val = 5
+
+j.next = None
+j.val = 6
+
+
+s = Solution()
+head = s.mergeTwoLists(a,f)
+print (head.val, head.next)
+print (head.next.val, head.next.next)
+print head.next
+print head.next.next
