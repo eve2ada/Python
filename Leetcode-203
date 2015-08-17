@@ -16,33 +16,19 @@ class Solution:
     # @param {integer} val
     # @return {ListNode}
     def removeElements(self, head, val):
-        if head is None:
-            return None
-        if head.val == val:
-            head =  head.next   
+        dummy = ListNode(0)
+        dummy.next = head
+        pre = dummy
+        cur = head
         
-        if head.next is None:
-            if head.val != val:
-                return head
+        while cur:
+            if cur.val == val:
+                pre.next = cur.next
             else:
-                return None
-        else:         
-            temp = head
-            while temp.next is not None:
-                if temp.val == val:
-                    temp.val = temp.next.val
-                    temp.next = temp.next.next
-                else:
-                    temp = temp.next
-                
-                if temp.next is None:                       
-                    break
-                elif temp.next.next is None:
-                    if temp.next.val == val:
-                        temp.next = None
-                        break
-                
-            return head
+                pre = cur
+            cur = cur.next
+        
+        return dummy.next
 '''
 a = ListNode(1)
 b = ListNode(2)
