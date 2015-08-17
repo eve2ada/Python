@@ -1,0 +1,85 @@
+'''
+Remove all elements from a linked list of integers that have value val.
+
+Example
+Given: 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6
+Return: 1 --> 2 --> 3 --> 4 --> 5 
+'''
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    # @param {ListNode} head
+    # @param {integer} val
+    # @return {ListNode}
+    def removeElements(self, head, val):
+        if head is None:
+            return None
+        if head.val == val:
+            head =  head.next   
+        
+        if head.next is None:
+            if head.val != val:
+                return head
+            else:
+                return None
+        else:         
+            temp = head
+            while temp.next is not None:
+                if temp.val == val:
+                    temp.val = temp.next.val
+                    temp.next = temp.next.next
+                else:
+                    temp = temp.next
+                
+                if temp.next is None:                       
+                    break
+                elif temp.next.next is None:
+                    if temp.next.val == val:
+                        temp.next = None
+                        break
+                
+            return head
+'''
+a = ListNode(1)
+b = ListNode(2)
+c = ListNode(6)
+d = ListNode(3)
+e = ListNode(4)
+f = ListNode(5)
+g = ListNode(6)
+
+
+a.next = b
+a.val = 1
+
+b.next = c
+b.val = 2
+
+c.next = d
+c.val = 6
+
+d.next = e
+d.val = 3
+
+e.next = f
+e.val = 4
+
+f.next = g
+f.val = 5
+
+g.next = None
+g.val = 6
+'''
+
+a = ListNode(1)
+b = ListNode(1)
+s = Solution()
+a.next = b
+b.next = None
+head = s.removeElements(a,1)
+print head
+print head.val
