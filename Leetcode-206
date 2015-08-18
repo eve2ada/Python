@@ -24,3 +24,42 @@ class Solution:
                 cur = temp
             
             return pre
+
+a = ListNode(1)
+b = ListNode(2)
+c = ListNode(6)
+d = ListNode(3)
+e = ListNode(4)
+f = ListNode(5)
+g = ListNode(6)
+
+
+a.next = b
+a.val = 1
+
+b.next = c
+b.val = 2
+
+c.next = d
+c.val = 6
+
+d.next = e
+d.val = 3
+
+e.next = f
+e.val = 4
+
+f.next = g
+f.val = 5
+
+g.next = None
+g.val = 6
+
+s = Solution()
+result = s.reverseList(a)
+print result.next
+print result.val
+print result.next.next
+print result.next.val
+print result.next.next.next
+print result.next.next.val
