@@ -2,25 +2,5 @@
 Write a function to find the longest common prefix string amongst an array of strings. 
 '''
 def longestCommonPrefix(strs):
-    if strs == []:
-        return ''
-    elif '' in strs:
-        return ''
-    elif len(strs) == 1:
-        return strs[0]
-    else:
-        minStr = min(strs, key = len)
-        i = 0
-        cStr = ''
-        temp = strs[0][0]
-        while i < len(minStr):
-            print 'here'
-            temp = strs[0][i]
-            for j in range(len(strs)):
-                if strs[j][i] != temp:
-                    return cStr
-            cStr += temp
-            print 'cStr = ' + cStr
-            i += 1
-        
-        return cStr
+    import os
+    return os.path.commonprefix(strs)
