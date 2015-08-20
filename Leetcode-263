@@ -1,0 +1,28 @@
+'''
+Write a program to check whether a given number is an ugly number.
+
+Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. 
+For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.
+
+Note that 1 is typically treated as an ugly number. 
+        """
+        :type num: int
+        :rtype: bool
+        """
+'''
+def isUgly(num):
+    if num < 1:
+        return False
+    elif num == 1:
+        return True
+    elif num%2 != 0 and num%3 != 0 and num%5 != 0:
+        return False
+    else:
+        temp = num
+        while temp%5 == 0:
+            temp = temp/5
+        while temp%3 == 0:
+            temp = temp/3
+        while temp%2 == 0:
+            temp = temp/2
+        return temp/2 < 2 
