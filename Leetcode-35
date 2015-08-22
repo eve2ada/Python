@@ -6,20 +6,15 @@ def searchInsert(nums, target):
     """
     if nums == []:
         return 0
-    if target in nums:
-        return nums.index(target)
-    elif target < nums[0]:
+    if nums[0] > target:
         return 0
-    elif target > nums[-1]:
+    if nums[-1] < target:
         return len(nums)
+    
+    for index in range(len(nums)):
+        if nums[index] == target:
+            return index
+        elif nums[index] < target and nums[index+1] > target:
+            return index+1
     else:
-        l, h = 0, len(nums)-1
-        mid = (h-l)/2
-        if target < nums[mid]:
-            h = mid
-        else:
-            l = mid
-        
-        for index in range(l,h):
-            if nums[index] < target and nums[index+1] > target:
-                return index + 1
+        return len(nums)
