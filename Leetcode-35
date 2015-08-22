@@ -1,27 +1,25 @@
 def searchInsert(nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
-        if nums == []:
-            return 0
-        if target in nums:
-            return nums.index(target)
-        elif target < nums[0]:
-            return 0
-        elif target > nums[-1]:
-            return len(nums)
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    if nums == []:
+        return 0
+    if target in nums:
+        return nums.index(target)
+    elif target < nums[0]:
+        return 0
+    elif target > nums[-1]:
+        return len(nums)
+    else:
+        l, h = 0, len(nums)-1
+        mid = (h-l)/2
+        if target < nums[mid]:
+            h = mid
         else:
-            mid = len(nums)/2
-            while target < nums[mid]:
-                mid = mid/2
-            for index in range(mid,mid*2):
-                if nums[index] < target and nums[index + 1] > target:
-                    return index + 1
-            
-            while target > nums[mid]:
-                mid = mid + (len(nums)) /4
-            for index in range(2*mid-len(nums),mid):
-                if nums[index] < target and nums[index + 1] > target:
-                    return index + 1
+            l = mid
+        
+        for index in range(l,h):
+            if nums[index] < target and nums[index+1] > target:
+                return index + 1
