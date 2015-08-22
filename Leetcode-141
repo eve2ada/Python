@@ -16,16 +16,14 @@ class Solution(object):
         if not head:
             return False
         else:
-            temp1 = head
-            temp2 = head.next
-            while temp1 is not None:
-                while temp2 is not None:
-                    if temp1 == temp2:
-                        return True
-                    else:
-                        temp2 = temp2.next
-                
-                temp1 = temp1.next
+            newL = [head]
+            temp = head
+            while temp.next is not None:
+                if temp.next in newL:
+                    return True
+                else:
+                    newL.append(temp.next)
+                    temp = temp.next
             
             return False
 
