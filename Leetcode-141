@@ -1,0 +1,54 @@
+'''
+Given a linked list, determine if it has a cycle in it. 
+'''
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        if not head:
+            return False
+        else:
+            temp1 = head
+            temp2 = head.next
+            while temp1 is not None:
+                while temp2 is not None:
+                    if temp1 == temp2:
+                        return True
+                    else:
+                        temp2 = temp2.next
+                
+                temp1 = temp1.next
+            
+            return False
+
+a = ListNode(1)
+b = ListNode(2)
+c = ListNode(3)
+d = ListNode(4)
+e = ListNode(5)
+
+a.next = b
+a.val = 1
+
+b.next = c
+b.val = 2
+
+c.next = d
+c.val = 3
+
+d.next = e
+d.val = 4
+
+e.next = a
+e.val = 5
+
+s = Solution()
+print s.hasCycle(a)
