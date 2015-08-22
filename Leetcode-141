@@ -15,17 +15,20 @@ class Solution(object):
         """
         if not head:
             return False
-        else:
-            newL = [head]
-            temp = head
-            while temp.next is not None:
-                if temp.next in newL:
-                    return True
-                else:
-                    newL.append(temp.next)
-                    temp = temp.next
-            
+        elif head.next is None:
             return False
+        else:
+            pre = head
+            cur = head.next
+            head.next = None
+            
+            while cur is not None:
+                nex = cur.next
+                cur.next = pre
+                pre = cur
+                cur = nex
+            
+            return pre == head
 
 a = ListNode(1)
 b = ListNode(2)
