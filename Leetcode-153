@@ -1,0 +1,26 @@
+'''
+Suppose a sorted array is rotated at some pivot unknown to you beforehand.
+
+(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
+
+Find the minimum element.
+
+You may assume no duplicate exists in the array.
+'''
+def findMin(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    if not nums:
+        return None
+    elif len(nums) == 1:
+        return nums[0]
+    else:
+        for index in range(len(nums) - 1):
+            if nums[index + 1] > nums[index]:
+                continue
+            else:
+                return nums[index + 1]
+        
+        return nums[0]
