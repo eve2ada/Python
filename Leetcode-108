@@ -25,3 +25,14 @@ class Solution(object):
             root.left = self.sortedArrayToBST(nums[:len(nums)/2])
             root.right = self.sortedArrayToBST(nums[len(nums)/2+1:])
             return root
+    nums = [1,3,6,7,8,10,15,25]
+s = Solution()
+print s.sortedArrayToBST(nums).val
+print s.sortedArrayToBST(nums).left.val
+print s.sortedArrayToBST(nums).right.val
+print s.sortedArrayToBST(nums).left.left.val
+print s.sortedArrayToBST(nums).left.right.val
+print s.sortedArrayToBST(nums).right.left.val
+print s.sortedArrayToBST(nums).right.right.val
+print s.sortedArrayToBST(nums).left.left.left.val
+print s.sortedArrayToBST(nums).left.left.right
