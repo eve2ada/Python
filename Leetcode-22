@@ -29,4 +29,6 @@ class Solution:
         if left:
             self.DF(left-1,right,ans,string+'(')
         if right:
-            self.DF(left, right-1, ans, string+')')              
+            self.DF(left, right-1, ans, string+')') 
+s = Solution()
+print s.generateParenthesis(5)   
