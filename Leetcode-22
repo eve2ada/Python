@@ -1,0 +1,40 @@
+'''
+ Given n pairs of parentheses, write a function to generate all 
+ combinations of well-formed parentheses.
+
+For example, given n = 3, a solution set is:
+
+"((()))", "(()())", "(())()", "()(())", "()()()" 
+'''
+
+def generateParenthesis(n):
+    """
+    :type n: int
+    :rtype: List[str]
+    """
+    if n == 0:
+        result = []
+    elif n == 1:
+        result = ['()']
+    elif n == 2:
+        result = ['()()','(())']
+    else:
+        last = generateParenthesis(n-1)
+        result = []
+
+        for item in last:
+            if '('+item+')' not in result:
+                result.append('('+item+')')
+            if '()'+item not in result:
+                result.append('()'+item)
+            if item+'()' not in result:
+                result.append(item+'()')
+            
+            halfString = item[0:n-1]
+            if halfString.count('(') - halfString.count(')') == 1:
+                print 'here1'
+                if item[0:n-1]+')('+item[n-1:2*n-2] not in result:
+                    print 'here'
+                    result.append(item[0:n-1]+')('+item[n-1:2*n-2])
+    return result
+    print result                
