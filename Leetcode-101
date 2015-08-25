@@ -11,23 +11,18 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        stackL = [root]
-        stackR = [root]
-        while len(stackL) > 0 and len(stackR) > 0:
-            tempL = stackL.pop(0)
-            tempR = stackR.pop(0)
-            if tempL is None and tempR is None:
-                return True
-            elif tempL.left == tempL.right == tempR.right == tempR.left == None:
-                return True
-            elif None in [tempL.left, tempR.right]:
-                return False
-            elif tempL.left.val != tempR.right.val:
-                return False
-            else:
-                stackL.insert(0, tempL.left)
-                stackL.insert(0, tempL.right)
-                
-                stackR.insert(0, tempR.right)
-                stackR.insert(0, tempR.left)
-        return True
+        if root is None:
+            return True
+        else:
+            # run function to ckeck the left tree and right tree are mirrored
+            return self.checkSymmetric(root.left, root.right)
+    
+    def checkSymmetric(self, left, right):
+        if left == right == None:
+            return True
+        if None in [left,right]:
+            return False
+        if left.val != right.val:
+            return False
+        
+        return self.checkSymmetric(left.left, right.right) and self.checkSymmetric(left.right, right.left)
