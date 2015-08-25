@@ -25,9 +25,9 @@ class Solution(object):
             elif tempL.left.val != tempR.right.val:
                 return False
             else:
-                stackL.append(tempL.left)
-                stackL.append(tempL.right)
+                stackL.insert(0, tempL.left)
+                stackL.insert(0, tempL.right)
                 
-                stackR.append(tempR.right)
-                stackR.append(tempR.left)
+                stackR.insert(0, tempR.right)
+                stackR.insert(0, tempR.left)
         return True
