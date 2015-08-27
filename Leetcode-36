@@ -6,12 +6,11 @@ The Sudoku board could be partially filled, where empty cells are filled with th
 character '.'.
 '''
 class Solution(object):
-    def isValidSudoku(self, board):
+    def isValidSudoku(self,board):
         """
         :type board: List[List[str]]
         :rtype: bool
         """
-
         num = ['1','2','3','4','5','6','7','8','9','.']
         if not board:
             return False
@@ -24,7 +23,7 @@ class Solution(object):
                 return False
             for j in range(9):
                 if board[i][j] != '.':
-                    temp.append(board[i][i])
+                    temp.append(board[i][j])
             if len(temp) != len(set(temp)):
                 return False
             for j in board[i]:
@@ -32,37 +31,39 @@ class Solution(object):
                     return False
         
         #check if columns are valid
-        for i in range[9]: #column
+        for i in range(9): #column
             temp = []
             for j in range(9): #row
                 if board[j][i] != '.':
                     temp.append(board[j][i])
-            if temp != len(set(temp)):
+            if len(temp) != len(set(temp)):
                 return False    
         
         #check if each unit is valid
-        self.unitCheck(i)
-        self.unitCheck(i-3)
-        self.unitCheck(i-6)
+        if not self.unitCheck(i,board) or not self.unitCheck(i-3,board) or not self.unitCheck(i-6,board):
+            return False
         
         return True
+            
+    def unitCheck(self,i,board):
+        for i in range(3):
+            temp0, temp1, temp2 = [],[],[]
+            for j in range(3): #column
+                if board[i][j] != '.':
+                    temp0.append(board[i][j])
+            for j in range(3,6):
+                if board[i][j] != '.':
+                    temp1.append(board[i][j])
+            for j in range(6,9):
+                if board[i][j] != '.':
+                    temp2.append(board[i][j])
+        if len(temp0) != len(set(temp0)):
+            return False
+        if len(temp1) != len(set(temp1)):
+            return False
+        if len(temp2) != len(set(temp2)):
+            return False
         
-def unitCheck(self,i,board):
-    for i in range(3):
-        temp0, temp1, temp2 = [],[],[]
-        for j in range(3): #column
-            if board[i][j] != '.':
-                temp0.append(board[i][j])
-        for j in range(3,6):
-            if board[i][j] != '.':
-                temp1.append(board[i][j])
-        for j in range(6,9):
-            if board[i][j] != '.':
-                temp2.append(board[i][j])
-    if temp0 != len(set(temp0)):
-        return False
-    if temp1 != len(set(temp1)):
-        return False
     if temp2 != len(set(temp2)):
         return False
         
