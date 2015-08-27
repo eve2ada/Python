@@ -22,13 +22,12 @@ class Solution(object):
             if len(board[i]) != 9:
                 return False
             for j in range(9):
+                if board[i][j] not in num:
+                    return False
                 if board[i][j] != '.':
                     temp.append(board[i][j])
             if len(temp) != len(set(temp)):
                 return False
-            for j in board[i]:
-                if j not in num:
-                    return False
         
         #check if columns are valid
         for i in range(9): #column
@@ -37,16 +36,14 @@ class Solution(object):
                 if board[j][i] != '.':
                     temp.append(board[j][i])
             if len(temp) != len(set(temp)):
-                return False    
+                return False  
         
         #check if each unit is valid
-        return self.unitCheck(i,board) and self.unitCheck(i-3,board) and self.unitCheck(i-6,board)
-
-        return True
+        return self.unitCheck(0,board) and self.unitCheck(3,board) and self.unitCheck(6,board)
             
-    def unitCheck(self,i,board):
-        for i in range(3):
-            temp0, temp1, temp2 = [],[],[]
+    def unitCheck(self,x,board):
+        temp0, temp1, temp2 = [],[],[]
+        for i in range(x,x+3):
             for j in range(3): #column
                 if board[i][j] != '.':
                     temp0.append(board[i][j])
