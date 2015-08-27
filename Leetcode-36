@@ -40,9 +40,8 @@ class Solution(object):
                 return False    
         
         #check if each unit is valid
-        if not self.unitCheck(i,board) or not self.unitCheck(i-3,board) or not self.unitCheck(i-6,board):
-            return False
-        
+        return self.unitCheck(i,board) and self.unitCheck(i-3,board) and self.unitCheck(i-6,board)
+
         return True
             
     def unitCheck(self,i,board):
@@ -64,6 +63,5 @@ class Solution(object):
         if len(temp2) != len(set(temp2)):
             return False
         
-    if temp2 != len(set(temp2)):
-        return False
+        return True
         
