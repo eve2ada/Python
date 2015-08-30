@@ -1,0 +1,46 @@
+'''
+ The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of 
+ rows like this: (you may want to display this pattern in a fixed font for better 
+ legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of 
+rows:
+
+string convert(string text, int nRows);
+
+convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR". 
+'''
+def convert(self, s, numRows):
+    """
+    :type s: str
+    :type numRows: int
+    :rtype: str
+    """
+    if len(s) <= numRows:
+        return s
+    temp = []
+    index = 0
+    while index in range(len(s)):
+        temp.append(list(s[index:index+numRows]),)
+        index += numRows
+        temp.append([' '] + list(s[index: index+(numRows-2)]) + [' '])
+        index += (numRows-2)
+    while len(temp[-1]) < numRows:
+        if set(temp[-1]) == {' '}:
+            temp.pop()
+        else:
+            temp[-1] += ' '* (numRows - len(temp[-1]))
+
+    ans = ''
+    for i in range(numRows):
+        for j in range(len(temp)):
+            if temp[j][i] != ' ':
+                ans += temp[j][i]
+    
+    return ans
