@@ -24,6 +24,21 @@ def convert(self, s, numRows):
     """
     if len(s) <= numRows or numRows == 1:
         return s
+    
+    if numRows == 2:
+        ans = ''
+        i = 0
+        while i < len(s):
+            ans += s[i]
+            i += 2
+        
+        j = 1
+        while j < len(s):
+            ans += s[j]
+            j += 2
+            
+        return ans
+    
     temp = []
     index = 0
     while index in range(len(s)):
@@ -36,7 +51,7 @@ def convert(self, s, numRows):
             temp.pop()
         else:
             temp[-1] += ' '* (numRows - len(temp[-1]))
-
+    
     ans = ''
     for i in range(numRows):
         for j in range(len(temp)):
