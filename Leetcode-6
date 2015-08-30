@@ -22,9 +22,8 @@ def convert(self, s, numRows):
     :type numRows: int
     :rtype: str
     """
-    if len(s) <= numRows or numRows == 1:
+    if len(s) <= numRows  or numRows == 1:
         return s
-    
     if numRows == 2:
         ans = ''
         i = 0
@@ -41,17 +40,33 @@ def convert(self, s, numRows):
     
     temp = []
     index = 0
+    
     while index in range(len(s)):
-        temp.append(list(s[index:index+numRows]),)
-        index += numRows
-        temp.append([' '] + list(s[index: index+(numRows-2)]) + [' '])
-        index += (numRows-2)
+        # complete columns
+        if index+numRows < len(s):
+            temp.append(list(s[index:index+numRows]))
+            index += numRows
+        else:
+            m = index + numRows - len(s)
+            temp.append(list(s[index::]) + [' ']*m)
+            break
+        
+        #incomplete columns            
+        if index+(numRows-2) < len(s):
+            temp.append([' '] + list(s[index+(numRows-2)-1:index-1:-1]) + [' '])
+            index += (numRows-2)
+        else:
+            n = index+(numRows-2) - len(s) 
+            temp.append([' '] + [' ']*n + list(s[-1:index-1:-1]) + [' '])
+            break
+        
+        
     while len(temp[-1]) < numRows:
         if set(temp[-1]) == {' '}:
             temp.pop()
         else:
             temp[-1] += ' '* (numRows - len(temp[-1]))
-    
+
     ans = ''
     for i in range(numRows):
         for j in range(len(temp)):
