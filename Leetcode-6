@@ -22,7 +22,7 @@ def convert(self, s, numRows):
     :type numRows: int
     :rtype: str
     """
-    if len(s) <= numRows:
+    if len(s) <= numRows or numRows == 1:
         return s
     temp = []
     index = 0
