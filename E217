@@ -17,16 +17,6 @@ def containsDuplicate(nums):
     :type nums: List[int]
     :rtype: bool
     """
-    n = len(nums)
-    
-    if n < 2:
-        return False
-    else:
-        map = {}
-        for i in range(n):
-            if nums[i] not in map:
-                map[nums[i]] = 1
-            else:
-                return True
-    return False
+    return len(nums) != len(set(nums))
+
     
