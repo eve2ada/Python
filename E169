@@ -18,16 +18,6 @@ def majorityElement(nums):
     :type nums: List[int]
     :rtype: int
     """
-    map = {}
-    
-    n = len(nums)
-    if n == 1:
-        return nums[0]
-    for i in range(n):
-        if nums[i] not in map:
-            map[nums[i]] = 1
-        else:
-            map[nums[i]] += 1
-            if map[nums[i]] > n/2:
-                return nums[i]
+    return sorted(nums)[len(nums)/2]
+
             
