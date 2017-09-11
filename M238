@@ -26,11 +26,16 @@ def productExceptSelf(nums):
     :rtype: List[int]
     """
     n = len(nums)
-    left_list = [1, nums[0]]
-    right_list = [1, nums[n-1]]
+    output = []
 
-    for i in range(2, n):
-        left_list.append(left_list[i-1] * nums[i-1])
-        right_list.append(right_list[i-1] * nums[n-i])
+    p = 1
+    for i in range(n):
+        output.append(p)
+        p = p * nums[i]
 
-    return [x*y for (x,y) in zip(left_list, right_list[::-1])]
+    q = 1
+    for j in range(n-1, -1, -1):
+        output[j] = output[j] * q
+        q = q * nums[j]
+
+    return output
