@@ -22,15 +22,7 @@ def moveZeroes(nums):
     :type nums: List[int]
     :rtype: void Do not return anything, modify nums in-place instead.
     """
-    counter = 0
-    for item in nums:
-        if item == 0:
-            counter += 1
-    nums[:] = [x for x in nums if x != 0]
-    print "nums is now " + str(nums)
-    
-    #nums += [0]*counter
-    nums.extend([0]*counter)
-    
-    print "nums is now " + str(nums)
-    
+    for i in range(0, nums.count(0)):
+		      nums.remove(0)
+		      nums.append(0) 
+
