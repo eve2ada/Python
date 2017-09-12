@@ -1,0 +1,27 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Sep 11 17:08:29 2017
+
+@author: evelyn
+"""
+
+'''
+Suppose an array sorted in ascending order is rotated at some pivot 
+unknown to you beforehand.
+(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
+Find the minimum element.
+You may assume no duplicate exists in the array.
+'''
+def findMin(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    n = len(nums)
+    if n == 1:
+        return nums[0]
+    for i in range(n - 1):
+        if nums[i] > nums[i + 1]:
+            return nums[i + 1]
+    return nums[0]
