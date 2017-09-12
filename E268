@@ -17,12 +17,22 @@ Note:
 Your algorithm should run in linear runtime complexity. 
 Could you implement it using only constant extra space complexity? 
 '''
-def missingNumber(nums):
+def missingNumber(self, nums):
     """
     :type nums: List[int]
     :rtype: int
     """
     n = len(nums)
-    return n*(n+1)/2 - sum(nums)
+    if n == 1 and nums[0] == 0:
+        return 1
+
+    sorted_nums = list(sorted(nums))
+    if sorted_nums[0] != 0:
+        return 0
+    if sorted_nums[n-1] < n:
+        return n
+    for i in range(1,n):
+        if sorted_nums[i] != sorted_nums[i-1] + 1:
+            return sorted_nums[i-1] + 1
 
             
