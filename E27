@@ -22,19 +22,12 @@ Given input array nums = [3,2,2,3], val = 3
 Your function should return length = 2, with the first two elements of 
 nums being 2.
 '''
-def removeElement(nums, val):
+def removeElement(self, nums, val):
     """
     :type nums: List[int]
     :type val: int
     :rtype: int
     """
-    
-    start, end = 0, len(nums)-1
-    while start <= end:
-        if nums[start] == val:
-            nums[start], nums[end] = nums[end], nums[start]
-            end = end - 1
-        else:
-            start += 1
-    
-    return start
+    while val in nums:
+        nums.remove(val)
+    return len(nums)
