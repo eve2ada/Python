@@ -1,0 +1,49 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Sep 13 16:05:11 2017
+
+@author: evelyn
+"""
+
+'''
+ Given a sorted integer array without duplicates, return the summary 
+ of its ranges.
+
+Example 1:
+
+Input: [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+
+Example 2:
+
+Input: [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+
+'''
+def summaryRanges(nums):
+    """
+    :type nums: List[int]
+    :rtype: List[str]
+    """
+    n = len(nums)
+    ans = []
+    if n == 0:
+        return ans
+    elif n == 1:
+        return [str(nums[0])]
+    else:    
+        head = tail = nums[0]
+        strout = lambda h,t: str(h) + "->" + str(t) if h != t else str(h)
+        
+        for i in range(1, n):
+            if nums[i] > tail + 1:
+                ans.append(strout(head, tail))                
+                head = tail = nums[i]
+                            
+            elif nums[i] == tail + 1:
+                tail = tail + 1
+            
+        ans.append(strout(head, tail))    
+        
+        return ans
