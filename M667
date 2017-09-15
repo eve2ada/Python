@@ -21,11 +21,13 @@ def constructArray(n, k):
     :type k: int
     :rtype: List[int]
     """
-    ans = range(1, n-k+1)
-    for i in range(k):
-        if i % 2 == 0:
-            ans.append(n - i/2)
-        else:
-            ans.append(n - k + 1 + i/2)
-    return ans
+    ans = []
+
+    ans[:] = list(range(1, n+1))
+
+    i = 0
+    while i <= k/2:
+        ans.insert(n-k+2*i, ans[n-1])
+        i += 1
+    return ans[:n]
         
