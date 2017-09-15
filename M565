@@ -1,0 +1,46 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Sep 14 18:33:50 2017
+
+@author: evelyn
+"""
+
+'''
+A zero-indexed array A consisting of N different integers is given. 
+The array contains all integers in the range [0, N - 1].
+
+Sets S[K] for 0 <= K < N are defined as follows:
+
+S[K] = { A[K], A[A[K]], A[A[A[K]]], ... }.
+
+Sets S[K] are finite for each K and should NOT contain duplicates.
+
+Write a function that given an array A consisting of N integers, 
+return the size of the largest set S[K] for this array.
+'''
+def arrayNesting(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    n = len(nums)
+    if n == 0:
+        return 0
+    
+    maxLen = 0
+    cnt = 0
+    
+    sign = [False] * n
+    for i in range(n):        
+        while not sign[i]:
+            sign[i] = True
+            i = nums[i]
+            cnt += 1
+        maxLen = max(maxLen, cnt)
+        
+        cnt = 0
+    
+    return maxLen
+            
+        
