@@ -1,0 +1,58 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Sep 15 17:24:16 2017
+
+@author: evelyn
+"""
+
+'''
+Given a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
+
+The same repeated number may be chosen from C unlimited number of times.
+
+Note:
+
+    All numbers (including target) will be positive integers.
+    The solution set must not contain duplicate combinations.
+
+For example, given candidate set [2, 3, 6, 7] and target 7,
+A solution set is:
+
+[
+  [7],
+  [2, 2, 3]
+]
+'''
+
+'''
+This is not a passed solution, just for recording
+'''
+def combinationSum(candidates, target):
+    """
+    :type candidates: List[int]
+    :type target: int
+    :rtype: List[List[int]]
+    """
+    if len(candidates) == 0 or target is None:
+        return []
+    
+    candidates.sort()
+    if target < candidates[0]:
+        return []
+    
+    ans = []
+    if target in candidates:
+        ans.append([target])
+        
+    i = 0
+    while i < len(candidates) and candidates[i] < target:     
+        j = 1
+        while j < target/candidates[i]:
+            if (target - j*candidates[i]) not in candidates:
+                j += 1
+            else:
+                ans.append([candidates[i]]*j + [target - j*candidates[i]])
+                j += 1
+        i += 1
+    return ans
