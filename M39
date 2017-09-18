@@ -34,25 +34,18 @@ def combinationSum(candidates, target):
     :type target: int
     :rtype: List[List[int]]
     """
-    if len(candidates) == 0 or target is None:
-        return []
-    
-    candidates.sort()
-    if target < candidates[0]:
-        return []
-    
-    ans = []
-    if target in candidates:
-        ans.append([target])
-        
-    i = 0
-    while i < len(candidates) and candidates[i] < target:     
-        j = 1
-        while j < target/candidates[i]:
-            if (target - j*candidates[i]) not in candidates:
-                j += 1
+    result = []
+    candidates = sorted(candidates)
+    def dfs(remain, stack):
+        if remain == 0:
+            result.append(stack)
+            return 
+
+        for item in candidates:
+            if item > remain: break
+            if stack and item < stack[-1]: continue
             else:
-                ans.append([candidates[i]]*j + [target - j*candidates[i]])
-                j += 1
-        i += 1
-    return ans
+                dfs(remain - item, stack + [item])
+    
+    dfs(target, [])
+    return result
