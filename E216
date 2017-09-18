@@ -33,10 +33,10 @@ def maximumProduct(nums):
     :type nums: List[int]
     :rtype: int
     """
-    pNum = [nums[0],nums[1],nums[2]]
+    pNum = [0]*3
     nNum = [0]*2
     for i in nums:
-        if i < min(nNum):
+        if (i < 0 and 0 in nNum) or i < min(nNum):
             nNum[:] = [i] + [min(nNum)]
         else:
             if i > min(pNum) and i not in pNum:
