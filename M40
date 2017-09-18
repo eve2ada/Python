@@ -41,7 +41,8 @@ def combinationSum2(candidates, target):
         if remain < 0:
             return 
         if remain == 0:
-            ans.append(path)
+            if path not in ans:
+                ans.append(path)
             return
         
         for i in range(index, len(candidates)):
