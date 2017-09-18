@@ -34,21 +34,20 @@ def combinationSum2(candidates, target):
     :type target: int
     :rtype: List[List[int]]
     """
-    ans = []
-    candidates.sort()
-    
-    def dfs(index, remain, path):
-        if remain < 0:
-            return 
-        if remain == 0:
-            if path not in ans:
+        ans = []
+        candidates.sort()
+
+        def dfs(index, remain, path):
+            if remain < 0:
+                return 
+            if remain == 0:
                 ans.append(path)
-            return
-        
-        for i in range(index, len(candidates)):
-            dfs(i+1, remain - candidates[i], path + [candidates[i]])          
-    
-    dfs(0, target, [])
-    
-    return ans
+                return
+
+            for i in range(index, len(candidates)):
+                dfs(i+1, remain - candidates[i], path + [candidates[i]])          
+
+        dfs(0, target, [])
+
+        return set(ans)
     
