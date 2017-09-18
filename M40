@@ -42,10 +42,10 @@ def combinationSum2(candidates, target):
             return 
         if remain == 0:
             ans.append(path)
+            return
         
         for i in range(index, len(candidates)):
-            dfs(i, remain - candidates[i], path + [candidates[i]])
-            index += 1
+            dfs(i, remain - candidates[i], path + [candidates[i]])              
     
     dfs(0, target, [])
     
