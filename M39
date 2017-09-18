@@ -34,18 +34,23 @@ def combinationSum(candidates, target):
     :type target: int
     :rtype: List[List[int]]
     """
-    result = []
-    candidates = sorted(candidates)
-    def dfs(remain, stack):
-        if remain == 0:
-            result.append(stack)
-            return 
-
-        for item in candidates:
-            if item > remain: break
-            if stack and item < stack[-1]: continue
-            else:
-                dfs(remain - item, stack + [item])
+    ans = []
+    candidates.sort()
     
-    dfs(target, [])
-    return result
+    def dfs(index, remain, path):   
+        print "index = " + str(index)
+        print "remain = " + str(remain)
+        print "path = " + str(path)
+        if remain == 0:
+            ans.append(path)
+            return
+        
+        if remain < 0:
+            #path[:] = path[:-1]
+            return
+        
+        for i in range(index, len(candidates)):          
+            dfs(i, remain-candidates[i], path+[candidates[i]])
+    
+    dfs(0, target, [])
+    return ans
