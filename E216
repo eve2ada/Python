@@ -34,15 +34,18 @@ def maximumProduct(nums):
     :rtype: int
     """
     pNum = [0]*3
-    nNum = [0]*2
+    nNum = [0]*3
     for i in nums:
-        if (i < 0 and 0 in nNum) or i < min(nNum):
-            nNum[:] = [i] + [min(nNum)]
-        else:
-            if i > min(pNum) and i not in pNum:
-                pNum[:] = [i] + sorted(pNum)[1:]
+        if i < max(nNum):
+            nNum[:] = [i] + sorted(nNum)[:2]
+        elif i > min(pNum):
+            pNum[:] = [i] + sorted(pNum)[1:]
 
-    if nNum[0] * nNum[1] > sorted(pNum)[0]*sorted(pNum)[1]:
-        return nNum[0] * nNum[1] * max(pNum)
+    if len(nums) == 3:
+        return nums[0]*nums[1]*nums[2]
+    elif sum(pNum) == 0:
+        return nNum[0] * nNum[1] * nNum[2]
+    elif sorted(nNum)[0] * sorted(nNum)[1] > sorted(pNum)[0]*sorted(pNum)[1]:
+        return sorted(nNum)[0] * sorted(nNum)[1] * max(pNum)
     else:
         return pNum[0] * pNum[1] * pNum[2]
