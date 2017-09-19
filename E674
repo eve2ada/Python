@@ -1,0 +1,37 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Sep 18 23:18:45 2017
+
+@author: evelyn
+"""
+
+'''
+Given an unsorted array of integers, find the length of longest continuous 
+increasing subsequence. 
+'''
+def findLengthOfLCIS(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    if len(nums) == 0:
+        return 0
+    
+    ans = 1    
+    n = len(nums)
+    cnt = 1
+    for i in range(n - 1):
+        print "i = " + str(i)
+        if nums[i] >= nums[i+1]:
+            print "nums[i] = " + str(nums[i])
+            print "nums[i+1] = " + str(nums[i+1])
+            print "cnt = " + str(cnt)
+            print "ans = " + str(ans)
+            ans = max(ans, cnt)
+            cnt = 1
+        else:
+            print "cnt 2 = " + str(cnt)
+            cnt += 1
+    
+    return max(ans,cnt)
