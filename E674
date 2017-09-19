@@ -22,16 +22,10 @@ def findLengthOfLCIS(nums):
     n = len(nums)
     cnt = 1
     for i in range(n - 1):
-        print "i = " + str(i)
         if nums[i] >= nums[i+1]:
-            print "nums[i] = " + str(nums[i])
-            print "nums[i+1] = " + str(nums[i+1])
-            print "cnt = " + str(cnt)
-            print "ans = " + str(ans)
             ans = max(ans, cnt)
             cnt = 1
         else:
-            print "cnt 2 = " + str(cnt)
             cnt += 1
     
     return max(ans,cnt)
