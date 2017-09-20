@@ -1,0 +1,56 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Sep 19 22:38:59 2017
+
+@author: evelyn
+"""
+
+'''
+Given a char array representing tasks CPU need to do. It contains capital letters A to 
+Z where different letters represent different tasks.Tasks could be done without 
+original order. Each task could be done in one interval. For each interval, CPU 
+could finish one task or just be idle.
+
+However, there is a non-negative cooling interval n that means between two same 
+tasks, there must be at least n intervals that CPU are doing different tasks or 
+just be idle.
+
+You need to return the least number of intervals the CPU will take to finish all 
+the given tasks.
+
+Example 1:
+
+Input: tasks = ['A','A','A','B','B','B'], n = 2
+Output: 8
+Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
+
+Note:
+
+    The number of tasks is in the range [1, 10000].
+    The integer n is in the range [0, 100].
+
+'''
+def leastInterval(tasks, n):
+    """
+    :type tasks: List[str]
+    :type n: int
+    :rtype: int
+    """
+    dic = {}
+    ans = 0
+    for item in tasks:
+        if item not in dic:
+            dic[item] = 1
+        else:
+            dic[item] += 1
+    
+    t = len(dic.keys())
+    if t < n:
+        ans = sum(dic.values()) + (max(dic.values())*(n-t+1))
+    else:
+        #deal with keys with values more than n
+        ans = sum(dic.values())
+    
+    return ans
+    
