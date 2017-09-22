@@ -44,21 +44,10 @@ def leastInterval(tasks, n):
             dic[item] = 1
         else:
             dic[item] += 1
-    
-    print "dic is " + str(dic)
-    
+
     t = len(dic.keys())
-    if t < n:
-        ans = sum(dic.values()) + (max(dic.values())*(n-t+1))
-    else:
-        ans = sum(dic.values())
-        tmp = []
-        tmp[:] = [x for x in sorted(dic.values())[t-n:]]
-        maxLen = max(tmp)
-        print "tmp is "+ str(tmp)
-        #deal with keys with values more than n
-        for i in tmp:
-            ans += maxLen - i
-    
-    return ans
-    
+    M = max(dic.values())
+
+    Mct = dic.values().count(M)
+
+    return max(len(tasks), (M - 1) * (n + 1) + Mct)
