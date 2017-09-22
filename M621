@@ -45,7 +45,6 @@ def leastInterval(tasks, n):
         else:
             dic[item] += 1
 
-    t = len(dic.keys())
     M = max(dic.values())
 
     Mct = dic.values().count(M)
