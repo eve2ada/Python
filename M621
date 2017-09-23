@@ -38,32 +38,13 @@ def leastInterval(tasks, n):
     :rtype: int
     """
     dic = {}
- #   ans = 0
     for item in tasks:
         if item not in dic:
             dic[item] = 1
         else:
             dic[item] += 1
     
-    print "dic is " + str(dic)
-    
-#    t = len(dic.keys())
     M = max(dic.values())
     
     Mct = dic.values().count(M)
-    '''
-    import collections
-    
-    task_counts = collections.Counter(tasks).values()
-    print 'task_counts is ' + str(task_counts)
-    print "sum(task_counts) = " + str(sum(task_counts))
-    
-    M = max(task_counts)
-    
-    
-    Mct = task_counts.count(M)
-    
-    '''
-    print 'M is ' + str(M)
-    print 'Mct is ' + str(Mct)
     return max(len(tasks), (M - 1) * (n + 1) + Mct)
