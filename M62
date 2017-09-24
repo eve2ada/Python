@@ -22,4 +22,10 @@ def uniquePaths(m, n):
     :type n: int
     :rtype: int
     """
+    ans = [[1 for x in range(m)] for x in range(n)]
     
+    for i in range(m):
+        for j in range(n):
+            ans[i][j] = ans[i-1][j] + ans[i][j-1]
+    
+    return ans[-1][-1]
