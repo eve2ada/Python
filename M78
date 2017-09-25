@@ -32,7 +32,7 @@ def subsets(nums):
     :rtype: List[List[int]]
     """
     ans = [[]]
-    for i in nums:
+    for i in sorted(nums):
         ans += [j + [i] for j in ans]
 
     return ans
