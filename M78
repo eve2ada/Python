@@ -40,3 +40,5 @@ def subsets(nums):
         for j in range(i + 1,len(nums)):
             ans.append([nums[i], nums[j]])
     
+    return ans
+    
