@@ -29,15 +29,11 @@ def spiralOrder(matrix):
     ans = []
     while matrix:
         ans += matrix.pop(0)
-        print "matrix is " + str(matrix)
-        
+                
         if matrix and matrix[0]:
             for row in matrix:
-                print "row is " + str(row)
                 ans.append(row.pop())
-                print "ans is " + str(ans)
-        print "matrix is " + str(matrix)
-        
+            
         if matrix:
             ans += matrix.pop()[::-1]
         
