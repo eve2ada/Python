@@ -38,11 +38,8 @@ def triangleNumber(nums):
     
     
     for i in range(n-2):
-        print "i = " + str(i)
         j = i + 1
         k = n - 1
-        print "j = " + str(j)
-        print "k = " + str(k)
         while j < k:
             if nums[j] + nums[k] > nums[i]:
                 ans += k - j
