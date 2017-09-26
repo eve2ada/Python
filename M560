@@ -31,9 +31,9 @@ def subarraySum(nums, k):
     
     n = len(nums)
     ans = 0
-    
-    for i in range(n-1):
-        tmpSum = i
+
+    for i in range(n):
+        tmpSum = nums[i]
         if nums[i] == k:
             ans += 1
         else:
