@@ -28,23 +28,14 @@ def subarraySum(nums, k):
     :type k: int
     :rtype: int
     """
-    
-    n = len(nums)
+    dic = {0:1}
     ans = 0
-
-    for i in range(n):
-        tmpSum = nums[i]
-        if nums[i] == k:
-            ans += 1
-        else:
-            j = i+1
-            while j < n:
-                tmpSum += nums[j]
-                if tmpSum != k:
-                    j += 1
-                else:
-                    ans += 1
-                    break
+    tmpSum = 0
+    
+    for item in nums:
+        tmpSum += item
+        ans += dic.get(tmpSum - k, 0)
+        dic[tmpSum] = dic.get(tmpSum,0) + 1
     return ans
         
                 
