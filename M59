@@ -1,0 +1,56 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Sep 25 21:08:41 2017
+
+@author: evelyn
+"""
+
+'''
+Given an integer n, generate a square matrix filled with elements from 1 to n2 in 
+spiral order.
+
+For example,
+Given n = 3,
+You should return the following matrix:
+
+[
+ [ 1, 2, 3 ],
+ [ 8, 9, 4 ],
+ [ 7, 6, 5 ]
+]
+
+'''
+def generateMatrix(n):
+    """
+    :type n: int
+    :rtype: List[List[int]]
+    """
+    sign = [[0] * n for _ in range(n)]
+    left, right, top, down = 0,n-1,0,n-1
+    num = 1
+    
+    while left <= right and top <= down:
+        for i in range(left, right+1):
+            sign[top][i] = num
+            num += 1
+        top += 1
+        
+        for i in range(top, down+1):
+            sign[i][right] = num
+            num += 1
+        right -= 1
+        
+        for i in range(right, left-1, -1):
+            sign[down][i] = num
+            num += 1
+        down -= 1
+        
+        for i in range(down, top-1, -1):
+            sign[i][left] = num
+            num += 1
+        left += 1
+    
+    return sign
+    
+    
