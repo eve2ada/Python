@@ -14,32 +14,42 @@ class RandomizedSet(object):
         Initialize your data structure here.
         """
         self.items = []
+        self.dic = {}
         
 
     def insert(self, val):
         """
-        Inserts a value to the set. Returns true if the set did not already contain the specified element.
+        Inserts a value to the set. Returns true if the set did not already contain 
+        the specified element.
         :type val: int
         :rtype: bool
         """
-        if val in self.items:
+        if val in self.dic:
             return False
         else:
             self.items.append(val)
+            self.dic[val] = len(self.items) - 1
             return True
-        
 
     def remove(self, val):
         """
-        Removes a value from the set. Returns true if the set contained the specified element.
+        Removes a value from the set. Returns true if the set contained the specified 
+        element.
         :type val: int
         :rtype: bool
         """
-        if val not in self.items:
+        if val not in self.dic:
             return False
         else:
-            self.items.remove(val)
+            idx = self.dic[val]
+            last = self.items[-1]
+            self.items[idx] = last
+            self.dic[last] = idx
+            self.items.pop(-1)
+            self.dic.pop(val,0)
+
             return True
+        
 
     def getRandom(self):
         """
@@ -47,7 +57,7 @@ class RandomizedSet(object):
         :rtype: int
         """
         import random
-        r = random.randrange(0, len(self.items))
+        r = random.randint(0, len(self.items)-1)
         return self.items[r]
         
 
