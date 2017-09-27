@@ -42,9 +42,11 @@ class RandomizedSet(object):
             return False
         else:
             idx = self.dic[val]
-            self.items[idx] = self.items[-1]
+            last = self.items[-1]
+            self.items[idx] = last
             self.items.pop(-1)
             self.dic.pop(val,0)
+            self.dic[last] = idx
             return True
         
 
