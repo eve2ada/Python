@@ -33,5 +33,5 @@ def sortColors(nums):
     dic = {}
     for item in nums:
         dic[item] = dic.get(item,0) + 1
-    
+
     nums[:] = [0] * dic.get(0,0) + [1] * dic.get(1,0) + [2] * dic.get(2,0)
