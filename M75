@@ -33,17 +33,12 @@ def sortColors(nums):
     r, w, b = 0,0,len(nums)-1
     
     while w <= b:
-        print "nums = " + str(nums)
-        print "r  = " + str(r)
-        print "w  = " + str(w)
-        print "b  = " + str(b)
         if nums[w] == 0:
             nums[w], nums[r] = nums[r], nums[w]
             w += 1
             r += 1
         elif nums[w] == 2:
             nums[w], nums[b] = nums[b], nums[w]
-#            w += 1
             b -= 1
         else:
             w += 1
