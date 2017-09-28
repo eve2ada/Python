@@ -33,25 +33,12 @@ def maximumSwap(num):
     :rtype: int
     """
     
-    dig = list(str(num))
-    for i in range(len(dig)):
-        dig[i] = int(dig[i])
-    
-   # cur = dig[0]
-    dic = {dig[0]:0}
-    for i in range(1, len(dig)):
-        print "i = "+ str(i)
-        if dig[i] <= dig[i-1]:
-            dic[dig[i]] = i
-        else:
-            idx = dic[max([x for x in dic.keys() if x < dig[i]])]
-            print "idx = "+ str(idx)
-            dig[i], dig[idx] = dig[idx],dig[i]
-            print "dig = "+ str(dig)
-            break
-    
-    ans = ""
-    for item in dig:
-        ans += str(item)
-    
-    return int(ans)
+    dig = map(int, str(num))
+
+    dic = {x:i for i,x in enumerate(dig)}
+    for i, x in enumerate(dig):
+        for y in range(9, x, -1):
+            if dic.get(y,None) > i:
+                dig[i], dig[dic[y]] = y, dig[i]
+                return int("".join(map(str, dig)))
+    return num
