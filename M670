@@ -36,18 +36,22 @@ def maximumSwap(num):
     dig = list(str(num))
     for i in range(len(dig)):
         dig[i] = int(dig[i])
-
-    maxDig = dig[0]
-    idx = 0
+    
+   # cur = dig[0]
+    dic = {dig[0]:0}
     for i in range(1, len(dig)):
-        if dig[i] > maxDig:
-            maxDig = dig[i]
-            idx = i
-
-    dig[0],dig[idx] = dig[idx],dig[0]
-
+        print "i = "+ str(i)
+        if dig[i] <= dig[i-1]:
+            dic[dig[i]] = i
+        else:
+            idx = dic[max([x for x in dic.keys() if x < dig[i]])]
+            print "idx = "+ str(idx)
+            dig[i], dig[idx] = dig[idx],dig[i]
+            print "dig = "+ str(dig)
+            break
+    
     ans = ""
     for item in dig:
         ans += str(item)
-
+    
     return int(ans)
