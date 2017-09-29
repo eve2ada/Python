@@ -32,7 +32,7 @@ class Solution(object):
         :rtype: int
         """
         if len(nums) == 1:
-            return nums[0]
+            return 0
         if len(nums) == 2:
             return max(nums)
 
@@ -41,4 +41,5 @@ class Solution(object):
                 return i
         if nums[-1] > nums[len(nums) - 2]:
             return nums[-1]
+        
         
