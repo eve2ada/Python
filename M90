@@ -32,6 +32,6 @@ def subsetsWithDup(nums):
     for item in nums:
         cur = [j + [item] for j in ans]
         for i in cur:
-            if i not in ans:
+            if sorted(i) not in ans:
                 ans += [sorted(i)]
     return ans
