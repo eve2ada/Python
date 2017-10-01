@@ -37,7 +37,7 @@ class Solution(object):
         m,n = len(board), len(board[0])
         for i in range(m):
             for j in range(n):
-                if board[i][j] == 0 or board[i][j] == 2:
+                if board[i][j] == 0:
                     if self.nnb(board,i,j) == 3:
                         board[i][j] = 2
                 else:
