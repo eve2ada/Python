@@ -13,6 +13,7 @@ def removeDuplicates(nums):
     :type nums: List[int]
     :rtype: int
     """
+    
     if len(nums) < 3:
         return nums
 
