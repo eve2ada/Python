@@ -15,7 +15,7 @@ def removeDuplicates(nums):
     """
     
     if len(nums) < 3:
-        return nums
+        return len(nums)
 
     h,t = 0,1
 
