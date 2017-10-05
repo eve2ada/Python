@@ -11,21 +11,15 @@ Your algorithm should run in O(n) complexity.
 if len(nums) == 0:
     return 0
 
-dic = {}
-for i in range(len(nums)):
-    dic[nums[i]] = dic.get(nums[i], 0) + 1
-
-allNum = dic.keys()
-
+uniNum = set(nums)
 ans = 1
-j = 1
 cnt = 1
-while j in range(1,len(allNum)):
-    if allNum[j] == allNum[j-1] + 1:
-        cnt += 1
-        ans = max(ans, cnt)
-    else:
-        cnt = 1
-    j += 1
 
+for x in uniNum:
+    if x - 1 not in uniNum:
+        y = x + 1
+        while y in nums:
+            cnt += 1
+            y += 1
+        ans = max(ans, cnt)
 return ans
