@@ -24,22 +24,24 @@ def setZeroes(matrix):
     """
     m = len(matrix)
     n = len(matrix[0])
+
     rsign = [False] * m
     csign = [False] * n
-     
-    i = 0
-    j = 0
-    
-    while i < m and j < n:
-        print "i_j is " + str(i)+"_"+str(j)
-        print "rsign_csign is " + str(rsign) + "_" + str(csign)
-        if rsign[i] == False or csign[j] == False:
-            if matrix[i][j] == 0:
-                matrix[i] = [0] * n
-                for x in range(m):
-                    matrix[x][j] = 0
-                rsign[i] = True
-                csign[j] = True
-                i += 1
-                j += 1
+
+    for i in range(m):
+        j = 0
+        while j < n:
+            if csign[j] == False or rsign[i] == False:
+                if matrix[i][j] == 0:
+                    rsign[i] = True
+                    csign[j] = True
+            j += 1
+
+    for i in range(m):
+        if rsign[i] == True:
+            matrix[i] = [0] * n
+    for j in range(n):
+        if csign[j] == True:
+            for i in range(m):
+                matrix[i][j] = 0
             
