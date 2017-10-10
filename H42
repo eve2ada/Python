@@ -18,3 +18,18 @@ def trap(height):
     :type height: List[int]
     :rtype: int
     """
+    n = len(height)
+    h, t, minHeight, water = 0,n-1,0,0
+    
+    while h < t:
+        while h < t and height[h] <= minHeight:
+            water += minHeight - height[h]
+            h += 1
+        
+        while h < t and height[t] <= minHeight:
+            water += minHeight - height[t]
+            t -= 1
+        
+        minHeight = min(height[h], height[t])
+    
+    return water
