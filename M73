@@ -1,0 +1,45 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Oct  5 19:53:03 2017
+
+@author: evelyn
+"""
+
+'''
+Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place. 
+    Follow up:
+
+    Did you use extra space?
+    A straight forward solution using O(mn) space is probably a bad idea.
+    A simple improvement uses O(m + n) space, but still not the best solution.
+    Could you devise a constant space solution?
+
+'''
+def setZeroes(matrix):
+    """
+    :type matrix: List[List[int]]
+    :rtype: void Do not return anything, modify matrix in-place instead.
+
+    """
+    m = len(matrix)
+    n = len(matrix[0])
+    rsign = [False] * m
+    csign = [False] * n
+     
+    i = 0
+    j = 0
+    
+    while i < m and j < n:
+        print "i_j is " + str(i)+"_"+str(j)
+        print "rsign_csign is " + str(rsign) + "_" + str(csign)
+        if rsign[i] == False or csign[j] == False:
+            if matrix[i][j] == 0:
+                matrix[i] = [0] * n
+                for x in range(m):
+                    matrix[x][j] = 0
+                rsign[i] = True
+                csign[j] = True
+                i += 1
+                j += 1
+            
